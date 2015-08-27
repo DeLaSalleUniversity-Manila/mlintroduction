@@ -1,0 +1,369 @@
+\documentclass[12pt,t]{beamer}
+\usepackage{graphicx}
+\setbeameroption{hide notes}
+\setbeamertemplate{note page}[plain]
+
+% get rid of junk
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+\hypersetup{pdfpagemode=UseNone} % don't show bookmarks on initial view
+
+% font
+\usepackage{fontspec}
+\setsansfont{TeX Gyre Heros}
+\setbeamerfont{note page}{family*=pplx,size=\footnotesize} % Palatino for notes
+% "TeX Gyre Heros can be used as a replacement for Helvetica"
+% In Unix, unzip the following into ~/.fonts
+% In Mac, unzip it, double-click the .otf files, and install using "FontBook"
+%   http://www.gust.org.pl/projects/e-foundry/tex-gyre/heros/qhv2.004otf.zip
+
+% Code listings
+\usepackage{listings}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+
+\newcommand{ \gA} {\it {\bf A}}
+\newcommand{ \gB}  {\it {\bf B}}
+\newcommand{ \gal}  {\bf \alpha}
+\newcommand{ \galp}  {\bf \alpha'}
+\newcommand{\tb}{\textcolor{blue}} 
+\newcommand{\tr}{\textcolor{red}}
+
+% named colors
+\definecolor{offwhite}{RGB}{249,242,215}
+\definecolor{foreground}{RGB}{255,255,255}
+\definecolor{background}{RGB}{24,24,24}
+\definecolor{title}{RGB}{107,174,214}
+\definecolor{gray}{RGB}{155,155,155}
+\definecolor{subtitle}{RGB}{102,255,204}
+\definecolor{hilight}{RGB}{102,255,204}
+\definecolor{vhilight}{RGB}{255,111,207}
+\definecolor{lolight}{RGB}{155,155,155}
+%\definecolor{green}{RGB}{125,250,125}
+
+% use those colors
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{subtitle}{fg=subtitle}
+\setbeamercolor{institute}{fg=gray}
+\setbeamercolor{normal text}{fg=foreground,bg=background}
+\setbeamercolor{item}{fg=foreground} % color of bullets
+\setbeamercolor{subitem}{fg=gray}
+\setbeamercolor{itemize/enumerate subbody}{fg=gray}
+\setbeamertemplate{itemize subitem}{{\textendash}}
+\setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
+\setbeamerfont{itemize/enumerate subitem}{size=\footnotesize}
+
+% page number
+\setbeamertemplate{footline}{%
+    \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[20pt]{\color{gray}
+          \scriptsize\insertframenumber}}}\hspace*{5pt}}
+
+% add a bit of space at the top of the notes page
+\addtobeamertemplate{note page}{\setlength{\parskip}{12pt}}
+
+% a few macros
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\ig}{\includegraphics}
+\newcommand{\subt}[1]{{\footnotesize \color{subtitle} {#1}}}
+
+
+% title info
+\title{CPELEC1 0}
+\subtitle{Machine Intelligence Introduction}
+\author{\href{https://github.com/melvincabatuan}{Melvin Cabatuan}}
+\institute{\href{https://www.dlsu.edu.ph}{Electronics \& Communications Engineering} \\[2pt] \href{http://www.dlsu.edu.ph}{De La Salle University{\textendash}Manila}}
+\date{
+\href{https://github.com/melvincabatuan}{\tt \scriptsize github.com/melvincabatuan}
+}
+
+
+
+\begin{document}
+
+% title slide
+{
+\setbeamertemplate{footline}{} % no page number here
+\frame{
+  \titlepage
+}
+}
+
+
+
+\begin{frame}{What is Machine Intelligence \footnotemark?}
+\centerline{
+\ig[height=0.75\textheight]{Images/machine_intelligence_collins.png}
+}
+\footnotetext[1]{http://www.collinsdictionary.com/dictionary/english/machine-intelligence}
+\end{frame}
+
+
+\begin{frame}{What is Artificial Intelligence (AI)?}
+  \subt{``It is the science and engineering of making intelligent machines, especially intelligent computer programs. It is related to the similar task of using computers to understand human intelligence, but AI does not have to confine itself to methods that are biologically observable.'' - John McCarthy}
+
+\begin{center}
+\ig[width=0.6\textwidth]{Images/mccarthy.jpg}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}{What is Intelligence?}
+  \subt{``Intelligence is the computational part of the ability to achieve goals in the world. Varying kinds and degrees of intelligence occur in people, many animals and some machines.'' - John McCarthy}
+
+\begin{center}
+\ig[width=0.6\textwidth]{Images/mccarthy.jpg}
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}{When did AI research start?}
+  \subt{``After WWII, a number of people independently started to work on intelligent machines. The English mathematician Alan Turing may have been the first. He gave a lecture on it in 1947. He also may have been the first to decide that AI was best researched by programming computers rather than by building machines. By the late 1950s, there were many researchers on AI, and most of them were basing their work on programming computers.'' - John McCarthy}
+
+\begin{center}
+\ig[width=0.8\textwidth]{Images/turing.jpg}
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}{Does AI aim at human-level intelligence?}
+  \subt{``Yes. The ultimate effort is to make computer programs that can solve problems and achieve goals in the world as well as humans. However, many people involved in particular research areas are much less ambitious.'' - John McCarthy}
+
+\begin{center}
+\ig[width=1\textwidth]{Images/aiman.jpg}
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}{Facebook's 'M' virtual assistant}
+  \subt{A text-based virtual assistant integrated with Facebook Messenger that unlike Siri, Cortana, or Google Now relies on both human and artificial intelligence.}
+
+\begin{center}
+\ig[width=0.7\textwidth]{Images/m.jpg}
+\end{center}
+
+\footnotetext{http://appleinsider.com/articles/15/08/26/facebook-launches-m-virtual-assistant-driven-by-both-human-and-artificial-intelligence}
+\end{frame}
+
+
+
+
+\begin{frame}{Google's Deepdream}
+  \subt{Artificial intelligence meets hallucinations with Google's deep dream.}
+
+\begin{center}
+\ig[width=1\textwidth]{Images/deepdream.jpg}
+\end{center}
+
+\footnotetext{https://github.com/google/deepdream}
+\end{frame}
+
+
+\begin{frame}{IBM's Watson software in Medicine}
+  \subt{IBM intends to use around 30 billion images, including X-rays, computerized tomography, and magnetic-resonance-imaging scans to “train” its Watson software to identify ailments such as cancer and heart disease.}
+
+\begin{center}
+\ig[width=0.7\textwidth]{Images/merge.jpg}
+\end{center}
+
+\footnotetext{http://www.wsj.com/articles/ibm-crafts-a-role-for-artificial-intelligence-in-medicine}
+\end{frame}
+
+
+
+
+\begin{frame}{AI Sub-fields}
+\vspace{36pt}
+
+\bi
+\item Bioinformatics/ Genomics
+\item Computer Vision
+\item Machine Learning
+\item Natural language processing
+\item Reasoning/Logic
+\item Robotics
+\item Sensor and Network
+\ei
+\end{frame}
+
+
+
+
+\begin{frame}{Computer Vision}
+  \subt{It is a field that includes methods for acquiring, processing, analyzing, and understanding images and, in general, high-dimensional data from the real world in order to produce numerical or symbolic information, e.g., in the forms of decisions. - Wikipedia}
+
+\begin{center}
+\ig[width=0.8\textwidth]{Images/eye.jpg}
+\end{center}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Robotics}
+  \subt{It refers to the design, construction, operation, and application of robots. The term was coined by the Russian-born American scientist and writer Isaac Asimov.}
+
+\begin{center}
+\ig[width=0.4\textwidth]{Images/asimov.jpg}
+\end{center}
+
+\end{frame}
+
+
+
+
+\begin{frame}{Laws of robotics}
+\vspace{36pt}
+
+\bi
+\item Law Zero: ``A robot may not injure humanity, or, through inaction, allow humanity to come to harm.''
+\item Law One: ``A robot may not injure a human being, or, through inaction, allow a human being to come to harm, unless this would violate a higher order law.''
+\item Law Two: ``A robot must obey orders given it by human beings, except where such orders would conflict with a higher order law.''
+\item Law Three: ``A robot must protect its own existence as long as such protection does not conflict with a higher order law.''
+\ei
+\end{frame}
+
+
+
+\begin{frame}{Machine Learning}
+  \subt{``Field of study that gives computers the ability to learn without being explicitly programmed'' - Arthur Samuel.}
+
+\begin{center}
+\ig[width=0.9\textwidth]{Images/samuel.jpg}
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}{Machine Learning}
+  \subt{``A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E'' - Tom Mitchell.}
+
+\begin{center}
+\ig[width=0.75\textwidth]{Images/mitchell.jpg}
+\end{center}
+
+\end{frame}
+
+
+
+\begin{frame}{Question}
+  
+\begin{center}
+\ig[width=1\textwidth]{Images/ng1.png}
+\end{center}
+\footnotetext{Andrew Ng Lecture, https://class.coursera.org/ml-005/lecture}
+\end{frame}
+
+
+
+\begin{frame}{Supervised Learning}
+  \subt{``Supervised learning entails learning a mapping between a set of input variables
+X and an output variable Y and applying this mapping to predict the outputs for
+unseen data.''}
+
+\begin{center}
+\ig[width=0.9\textwidth]{Images/ng2.png}
+\end{center}
+\footnotetext[1]{Cunningham, P. et al. "Supervised learning." Machine Learning Techniques for Multimedia. Springer Berlin Heidelberg, 2008. 21-49.}
+\footnotetext[2]{Andrew Ng Lecture, https://class.coursera.org/ml-005/lecture}
+\end{frame}
+
+
+
+\begin{frame}{Supervised Learning}
+  \subt{``Supervised learning entails learning a mapping between a set of input variables
+X and an output variable Y and applying this mapping to predict the outputs for
+unseen data.''}
+
+\begin{center}
+\ig[width=0.9\textwidth]{Images/ng3.png}
+\end{center}
+\footnotetext[1]{Cunningham, P. et al. "Supervised learning." Machine Learning Techniques for Multimedia. Springer Berlin Heidelberg, 2008. 21-49.}
+\footnotetext[2]{Andrew Ng Lecture, https://class.coursera.org/ml-005/lecture}
+\end{frame}
+
+
+
+% No footnote on final slide
+{\setbeamertemplate{footline}{}
+
+
+\begin{frame}{Discussion questions}
+
+\vspace{12pt}
+
+{\small
+\bi
+\itemsep12pt
+    \item How to encourage researchers to publish in open access
+      journals? How to help with publication charges?
+    \item Should we change how we evaluate scholars, for hiring and
+      promotion?
+    \item Should we give campus authors a chance to "opt-out" of any
+      institutional mandate for open access?
+  \ei
+}
+
+\end{frame}
+}
+
+
+\begin{frame}{Appendix}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Inserting source code}
+\lstset{language=C++,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+    #include<stdio.h>
+    #include<iostream>
+    // A comment
+    int main(void)
+    {
+    printf("Hello World\n");
+    return 0;
+    }
+\end{lstlisting}
+\end{frame}
+
+
+
+\end{document}

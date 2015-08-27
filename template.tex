@@ -1,0 +1,197 @@
+\documentclass[12pt,t]{beamer}
+\usepackage{graphicx}
+\setbeameroption{hide notes}
+\setbeamertemplate{note page}[plain]
+
+% get rid of junk
+\usetheme{default}
+\beamertemplatenavigationsymbolsempty
+\hypersetup{pdfpagemode=UseNone} % don't show bookmarks on initial view
+
+% font
+\usepackage{fontspec}
+\setsansfont{TeX Gyre Heros}
+\setbeamerfont{note page}{family*=pplx,size=\footnotesize} % Palatino for notes
+% "TeX Gyre Heros can be used as a replacement for Helvetica"
+% In Unix, unzip the following into ~/.fonts
+% In Mac, unzip it, double-click the .otf files, and install using "FontBook"
+%   http://www.gust.org.pl/projects/e-foundry/tex-gyre/heros/qhv2.004otf.zip
+
+% Code listings
+\usepackage{listings}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+
+\newcommand{ \gA} {\it {\bf A}}
+\newcommand{ \gB}  {\it {\bf B}}
+\newcommand{ \gal}  {\bf \alpha}
+\newcommand{ \galp}  {\bf \alpha'}
+\newcommand{\tb}{\textcolor{blue}} 
+\newcommand{\tr}{\textcolor{red}}
+
+% named colors
+\definecolor{offwhite}{RGB}{249,242,215}
+\definecolor{foreground}{RGB}{255,255,255}
+\definecolor{background}{RGB}{24,24,24}
+\definecolor{title}{RGB}{107,174,214}
+\definecolor{gray}{RGB}{155,155,155}
+\definecolor{subtitle}{RGB}{102,255,204}
+\definecolor{hilight}{RGB}{102,255,204}
+\definecolor{vhilight}{RGB}{255,111,207}
+\definecolor{lolight}{RGB}{155,155,155}
+%\definecolor{green}{RGB}{125,250,125}
+
+% use those colors
+\setbeamercolor{titlelike}{fg=title}
+\setbeamercolor{subtitle}{fg=subtitle}
+\setbeamercolor{institute}{fg=gray}
+\setbeamercolor{normal text}{fg=foreground,bg=background}
+\setbeamercolor{item}{fg=foreground} % color of bullets
+\setbeamercolor{subitem}{fg=gray}
+\setbeamercolor{itemize/enumerate subbody}{fg=gray}
+\setbeamertemplate{itemize subitem}{{\textendash}}
+\setbeamerfont{itemize/enumerate subbody}{size=\footnotesize}
+\setbeamerfont{itemize/enumerate subitem}{size=\footnotesize}
+
+% page number
+\setbeamertemplate{footline}{%
+    \raisebox{5pt}{\makebox[\paperwidth]{\hfill\makebox[20pt]{\color{gray}
+          \scriptsize\insertframenumber}}}\hspace*{5pt}}
+
+% add a bit of space at the top of the notes page
+\addtobeamertemplate{note page}{\setlength{\parskip}{12pt}}
+
+% a few macros
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\ig}{\includegraphics}
+\newcommand{\subt}[1]{{\footnotesize \color{subtitle} {#1}}}
+
+
+% title info
+\title{A Presentation Template}
+\subtitle{A subtitle's perspective}
+\author{\href{http://kbroman.org}{Karl Broman}}
+\institute{\href{https://www.biostat.wisc.edu}{Biostatistics \& Medical Informatics} \\[2pt] \href{http://www.wisc.edu}{University of Wisconsin{\textendash}Madison}}
+\date{\href{http://kbroman.org}{\tt \scriptsize kbroman.org}
+\\[-4pt]
+\href{https://github.com/kbroman}{\tt \scriptsize github.com/kbroman}
+\\[-4pt]
+\href{https://twitter.com/kwbroman}{\tt \scriptsize @kwbroman}
+}
+
+
+
+\begin{document}
+
+% title slide
+{
+\setbeamertemplate{footline}{} % no page number here
+\frame{
+  \titlepage
+}
+}
+
+
+
+\begin{frame}{Image Test}
+\centerline{
+\ig[height=0.95\textheight]{Images/img01.png}
+}
+\end{frame}
+
+
+\begin{frame}{More Image Test}
+\subt{Subtitle}
+\begin{center}
+\ig[width=0.95\textwidth]{Images/img02.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Inserting source code}
+\lstset{language=C++,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+    #include<stdio.h>
+    #include<iostream>
+    // A comment
+    int main(void)
+    {
+    printf("Hello World\n");
+    return 0;
+    }
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}{List View}
+\vspace{36pt}
+
+\bi
+\item Pay for open access
+\item Support young open access journals
+
+\vspace*{12pt}
+
+\hspace{2cm} {\color{vhilight} \sc or}
+
+\vspace*{12pt}
+
+\item Let subscribers pay \& do more experiments
+\item Continue to go after Science, Nature, \& Cell
+\ei
+\end{frame}
+
+
+% No footnote on final slide
+{\setbeamertemplate{footline}{}
+
+
+\begin{frame}{Discussion questions}
+
+\vspace{12pt}
+
+{\small
+\bi
+\itemsep12pt
+    \item How to encourage researchers to publish in open access
+      journals? How to help with publication charges?
+    \item Should we change how we evaluate scholars, for hiring and
+      promotion?
+    \item Should we give campus authors a chance to "opt-out" of any
+      institutional mandate for open access?
+  \ei
+}
+
+\end{frame}
+
+}
+\end{document}
