@@ -330,6 +330,125 @@ unseen data.''}
 \end{frame}
 
 
+\begin{frame}{Gradient Descent}
+\subt{Line predictions for every iteration}  
+\begin{center}
+\ig[width=1\textwidth]{Images/Gradient_descent1.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Gradient Descent}
+\subt{Line predictions for every iteration}  
+\begin{center}
+\ig[width=1\textwidth]{Images/Gradient_descent2.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Gradient Descent}
+\subt{Line predictions for every iteration}  
+\begin{center}
+\ig[width=1\textwidth]{Images/Gradient_descent3.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Gradient Descent}
+\subt{$$ \theta_{j} := \theta_j - \alpha \dfrac{1}{m} \sum_{i=1}^{m}  (h_{\theta}(x^{(i)}) - y^{(i)})\, x_j^{(i)} $$ }  
+\begin{center}
+\ig[width=1\textwidth]{Images/Gradient_descent4.png}
+\end{center}
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+  \frametitle{Octave source code}
+  \subt{Gradient Descent batch update}
+\lstset{language=Octave,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+    for ii = 1:MAX_ITERATION
+           % Dimensions: 2x50 (50x2 * 2x1  - 50x1) = 2x1 
+           gradient = (1/m).* x' * ((x * theta) - y);
+           theta = theta - alpha .* gradient;
+   endfor
+\end{lstlisting}
+\footnotetext{github.com/melvincabatuan/mlintroduction/blob/master/GradientDescent.m}
+\end{frame}
+
+
+
+
+\begin{frame}{Linear Regression Model}
+\subt{$$ h_{\theta}(x) = \theta^T x = \sum_{i=0}^{n} \theta_i x_i  $$ }  
+\begin{center}
+\ig[width=1\textwidth]{ml1prediction.png}
+\end{center}
+\end{frame}
+
+
+
+
+\begin{frame}{Linear Regression Model}
+\subt{Height prediction of boys at ages 3.5 and 7 are 0.9737 and 1.197 m. }  
+\begin{center}
+\ig[width=1\textwidth]{ml1prediction.png}
+\end{center}
+\end{frame}
+
+
+
+
+\begin{frame}{Cost Function Surface Plot}
+\subt{$$ J(\theta) = \dfrac{1}{2m} \sum_{i=1}^{m} (h_{\theta}(x^{(i)}) - y^{(i)})^2  $$}  
+\begin{center}
+\ig[width=0.8\textwidth]{CostSurfacePlot.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Octave source code}
+  \subt{Gradient Descent batch update}
+\lstset{language=Octave,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+for i = 1:length(theta0_vals)
+	  for j = 1:length(theta1_vals)
+	     t = [theta0_vals(i); theta1_vals(j)];
+	      J_vals(i,j) = (1/(2*m)) .* (x * t - y)' * (x * t - y);
+    endfor
+endfor
+
+J_vals = J_vals';
+
+figure, contour(theta0_vals, theta1_vals, J_vals, logspace(-1.5,1.5,12))
+\end{lstlisting}
+\footnotetext{github.com/melvincabatuan/mlintroduction/blob/master/CostFunctionContour.m}
+\end{frame}
+
+
+
+\begin{frame}{Cost Function Contour Plot}
+\subt{$$ J(\theta) = \dfrac{1}{2m} \sum_{i=1}^{m} (h_{\theta}(x^{(i)}) - y^{(i)})^2  $$}  
+\begin{center}
+\ig[width=0.8\textwidth]{CostContourPlot.png}
+\end{center}
+\end{frame}
+
 
 
 
