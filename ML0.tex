@@ -330,6 +330,26 @@ unseen data.''}
 \end{frame}
 
 
+\begin{frame}{Linear Regression Model}
+  \subt{$$ h_{\theta}(x) = \theta^T x = \sum_{i=0}^{n} \theta_i x_i  $$ }
+  \begin{center}
+    Linear regression fits a line to a set of data. 
+    \ig[width=0.9\textwidth]{ml1prediction.png}
+  \end{center}
+\end{frame}
+
+
+
+\begin{frame}{Linear Regression Model}
+\subt{Height prediction of boys at ages 3.5 and 7 are 0.9737 and 1.197 m. }  
+\begin{center}
+\ig[width=1\textwidth]{ml1prediction.png}
+\end{center}
+\end{frame}
+
+
+
+
 \begin{frame}{Gradient Descent}
 \subt{Line predictions for every iteration}  
 \begin{center}
@@ -354,57 +374,15 @@ unseen data.''}
 \end{frame}
 
 
-\begin{frame}{Gradient Descent}
-\subt{$$ \theta_{j} := \theta_j - \alpha \dfrac{1}{m} \sum_{i=1}^{m}  (h_{\theta}(x^{(i)}) - y^{(i)})\, x_j^{(i)} $$ }  
-\begin{center}
-\ig[width=1\textwidth]{Images/Gradient_descent4.png}
-\end{center}
+\begin{frame}{How to find the best line hypothesis, $h_{\theta}$?}
+  \subt{$$ J(\theta) = \dfrac{1}{2m} \sum_{i=1}^{m} (h_{\theta}(x^{(i)}) - y^{(i)})^2  $$}  
+  \bi
+  \item Define a cost function, $J(\theta)$, that measures how 'bad' a given line is.
+  \item Iterate through each data point, $(x^{(i)},y^{(i)})$, and measure the distance(error) between the current hypothesis, $h_{\theta}$, to the data points.
+  \item It's conventional to utilize the squared error to ensure that it is positive and to make the error function differentiable. 
+  \ei
 \end{frame}
-
-
-
-
-\begin{frame}[fragile]
-  \frametitle{Octave source code}
-  \subt{Gradient Descent batch update}
-\lstset{language=Octave,
-                basicstyle=\ttfamily,
-                keywordstyle=\color{blue}\ttfamily,
-                stringstyle=\color{red}\ttfamily,
-                commentstyle=\color{green}\ttfamily,
-                morecomment=[l][\color{magenta}]{\#}
-}
-\begin{lstlisting}
-    for ii = 1:MAX_ITERATION
-           % Dimensions: 2x50 (50x2 * 2x1  - 50x1) = 2x1 
-           gradient = (1/m).* x' * ((x * theta) - y);
-           theta = theta - alpha .* gradient;
-   endfor
-\end{lstlisting}
-\footnotetext{github.com/melvincabatuan/mlintroduction/blob/master/GradientDescent.m}
-\end{frame}
-
-
-
-
-\begin{frame}{Linear Regression Model}
-\subt{$$ h_{\theta}(x) = \theta^T x = \sum_{i=0}^{n} \theta_i x_i  $$ }  
-\begin{center}
-\ig[width=1\textwidth]{ml1prediction.png}
-\end{center}
-\end{frame}
-
-
-
-
-\begin{frame}{Linear Regression Model}
-\subt{Height prediction of boys at ages 3.5 and 7 are 0.9737 and 1.197 m. }  
-\begin{center}
-\ig[width=1\textwidth]{ml1prediction.png}
-\end{center}
-\end{frame}
-
-
+  
 
 
 \begin{frame}{Cost Function Surface Plot}
@@ -413,6 +391,7 @@ unseen data.''}
 \ig[width=0.8\textwidth]{CostSurfacePlot.png}
 \end{center}
 \end{frame}
+
 
 
 \begin{frame}[fragile]
@@ -442,12 +421,99 @@ figure, contour(theta0_vals, theta1_vals, J_vals, logspace(-1.5,1.5,12))
 
 
 
+
 \begin{frame}{Cost Function Contour Plot}
 \subt{$$ J(\theta) = \dfrac{1}{2m} \sum_{i=1}^{m} (h_{\theta}(x^{(i)}) - y^{(i)})^2  $$}  
 \begin{center}
 \ig[width=0.8\textwidth]{CostContourPlot.png}
 \end{center}
 \end{frame}
+
+
+
+\begin{frame}{Understanding the Cost function plot}
+\vspace{36pt}
+
+\bi
+\item Each point in the previous two-dimensional space represents a hypothesis, $h_{\theta}$, which is a line in this case.
+\item The height of the function, $J(\theta)$, at each point is the error value for that particular hypothesis.
+\item Thus, the main goal for our algorithm in minimizing the Cost function, $J(\theta)$, is to move downhill in each step and eventually reach the lowest point.
+\ei
+\end{frame}
+
+
+
+\begin{frame}{Minimizing the Cost function plot}
+  \subt{
+ \begin{equation*}
+ \begin{aligned}
+  & \underset{\theta_0, \theta_1}{\text{minimize}}
+  & & J(\theta_0, \theta_1) = \dfrac{1}{2m} \sum_{i=1}^{m} (h_{\theta}(x^{(i)}) - y^{(i)})^2    \\
+\end{aligned}
+\end{equation*}
+}
+
+\bi
+\item To compute the minimum, we need to differentiate the cost function.
+\item In particular, we have to compute a partial derivative with respect to each model parameter, $\theta_0$, $\theta_1$, and so on.\\
+\item Gradient:
+$$ \nabla J(\theta_0, \theta_1) = \dfrac{1}{m} \sum_{i=1}^{m}  (h_{\theta}(x^{(i)}) - y^{(i)}) \, x^{(i)}$$
+\ei  
+\end{frame}
+
+
+
+
+
+\begin{frame}{Gradient Descent}
+\subt{$$ \theta_{j} := \theta_j - \alpha \dfrac{1}{m} \sum_{i=1}^{m}  (h_{\theta}(x^{(i)}) - y^{(i)})\, x_j^{(i)} $$ }  
+\begin{center}
+\ig[width=1\textwidth]{Images/Gradient_descent4.png}
+\end{center}
+\end{frame}
+
+
+
+\begin{frame}{Understanding the learning parameter, $\alpha$}
+\subt{$\alpha$ controls how large of a step we take downhill during each iteration. If we take too small steps, it will require many iterations to arrive at the minimum resulting to a slow convergence. }  
+\begin{center}
+\ig[width=0.7\textwidth]{Images/alpha1.png}
+\end{center}
+\end{frame}
+
+
+
+\begin{frame}{Understanding the learning parameter, $\alpha$}
+\subt{If we take too large of a step, we may step over the minimum, thus, it may not converge to the minimum.}  
+\begin{center}
+\ig[width=0.9\textwidth]{Images/alpha2.png}
+\end{center}
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+  \frametitle{Octave source code}
+  \subt{Gradient Descent batch update}
+\lstset{language=Octave,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+    for ii = 1:MAX_ITERATION
+           % Dimensions: 2x50 (50x2 * 2x1  - 50x1) = 2x1 
+           gradient = (1/m).* x' * ((x * theta) - y);
+           theta = theta - alpha .* gradient;
+   endfor
+\end{lstlisting}
+\footnotetext{github.com/melvincabatuan/mlintroduction/blob/master/GradientDescent.m}
+\end{frame}
+
+
 
 
 
@@ -489,6 +555,106 @@ unseen data.''}
 \ig[width=1\textwidth]{Images/ng5.png}
 \end{center}
 \footnotetext{Andrew Ng Lecture, https://class.coursera.org/ml-005/lecture}
+\end{frame}
+
+
+
+
+\begin{frame}{Binary Classification Problem}
+  \subt{ $$ y = \{0,1\}  $$}
+\bi
+\item 0: "Negative Class'' (E.x. benign tumor, not spam, not fraudulent)
+\item 1: ``Positive Class'' (E.x. malignant tumor, spam, fraudulent)
+\item Thus, $0 \le h_{\theta}(x) \le 1$.
+\ei  
+\end{frame}
+
+
+
+\begin{frame}{Hypothesis Representation}
+  \subt{ 
+ \begin{equation*}
+ \begin{aligned}
+   h_{\theta}(x) = g(\theta^T x) \\
+   g(z) = \dfrac{1}{1+e^{-z}} \\
+   \therefore h_{\theta}(x) = \dfrac{1}{1+e^{-\theta^T x}}
+\end{aligned}
+\end{equation*}
+}
+
+  \bi
+\item Instead of a linear regression line, the classification hypothesis takes the form of a Sigmoid or Logistic function. 
+\item Sigmoid function satisfies the constraint: $$ 0 \le h_{\theta}(x) \le 1 $$
+  \ei
+\end{frame}
+
+
+
+\begin{frame}{Sigmoid or Logistic Function}
+\begin{center}
+\ig[width=1\textwidth]{Images/sigmoid.png}
+\end{center}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+  \frametitle{Octave source code}
+  \subt{Plotting Sigmoid function}
+\lstset{language=Octave,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{green}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}
+}
+\begin{lstlisting}
+           g = inline('1.0 ./ (1.0 + exp(-z))');
+           % Usage: g(x), e.g. g(5)
+           x = linspace(-100, 100, 1000);
+           plot(x,g(x),'linewidth', 5);
+           xlabel('x'), ylabel('g(x)');
+\end{lstlisting}
+\footnotetext{github.com/melvincabatuan/mlintroduction}
+\end{frame}
+
+
+
+
+
+\begin{frame}{Hypothesis Output Interpretation}
+  \subt{ $$ h_\theta(x) = P(y=1|x;\theta)  $$}
+\bi
+\item $h_\theta(x) =$ estimated probability that $y = 1$ on input $x$
+\item E.x. If $h_\theta(x) = 0.7 $, tell patient that 70 \% chance of tumor being malignant
+\item Thus, if $h_\theta(x) \ge  0.5$, then predict "$y = 1$'' and if $h_\theta(x) <  0.5$ then predict ``$ y = 0$``
+\item What values of $\theta^T x$ does the hypothesis predict "$ y = 1 $''? How about ``$y = 0$''?
+\ei  
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}{Seatwork 1}
+  \subt{Linear Decision Boundary}
+  \begin{center}
+    Given the hypothesis function,$h_\theta(x)$, and decision boundary line, determine the model parameters. $\theta$. \\  When will the hypothesis predict ``$y = 1$'' ? ``$y = 0$''?
+   \ig[width=1\textwidth]{Images/decision_boundary1.png}
+  \end{center}
+\end{frame}
+
+
+
+
+\begin{frame}{Seatwork 2}
+  \subt{Nonlinear Decision Boundary}
+  \begin{center}
+    Given the hypothesis function,$h_\theta(x)$, and decision boundary line, determine the model parameters. $\theta$. \\ When will the hypothesis predict ``$y = 1$'' ? ``$y = 0$''?
+   \ig[width=1\textwidth]{Images/decision_boundary2.png}
+  \end{center}
 \end{frame}
 
 
