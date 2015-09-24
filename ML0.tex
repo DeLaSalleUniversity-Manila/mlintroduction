@@ -443,7 +443,7 @@ figure, contour(theta0_vals, theta1_vals, J_vals, logspace(-1.5,1.5,12))
 
 
 
-\begin{frame}{Minimizing the Cost function plot}
+\begin{frame}{Minimizing the Cost function}
   \subt{
  \begin{equation*}
  \begin{aligned}
@@ -641,7 +641,7 @@ unseen data.''}
 \begin{frame}{Seatwork 1}
   \subt{Linear Decision Boundary}
   \begin{center}
-    Given the hypothesis function,$h_\theta(x)$, and decision boundary line, determine the model parameters. $\theta$. \\  When will the hypothesis predict ``$y = 1$'' ? ``$y = 0$''?
+    Given the hypothesis function,$h_\theta(x)$, and decision boundary line, determine the model parameters. $\theta$. \\   When will the hypothesis predict ``$y = 1$'' ? ``$y = 0$''?
    \ig[width=1\textwidth]{Images/decision_boundary1.png}
   \end{center}
 \end{frame}
@@ -655,6 +655,62 @@ unseen data.''}
     Given the hypothesis function,$h_\theta(x)$, and decision boundary line, determine the model parameters. $\theta$. \\ When will the hypothesis predict ``$y = 1$'' ? ``$y = 0$''?
    \ig[width=1\textwidth]{Images/decision_boundary2.png}
   \end{center}
+\end{frame}
+
+
+
+
+
+\begin{frame}{Logistic Regression Example Data}
+  
+\begin{center}
+\ig[width=0.5\textwidth]{Images/ml3_5_1.png}
+\end{center}
+\footnotetext{http://melvincabatuan.github.io/Machine-Learning-Activity-3}
+\footnotetext{Andrew Ng Lecture, https://class.coursera.org/ml-005/lecture}
+\end{frame}
+
+
+
+
+\begin{frame}{Logistic Regression Cost Function}
+ \subt{$$ J(\theta) = \dfrac{1}{m} \sum_{i=1}^{m}\big[ -y^{(i)} \log (h_{\theta} (x^{(i)})) - (1 - y^{(i)}) \log(1 - h_{\theta} (x^{(i)}))  \big]   $$}  
+\begin{center}
+\ig[width=0.4\textwidth]{Images/ml3_9_1.png}
+\end{center}
+\footnotetext{http://melvincabatuan.github.io/Machine-Learning-Activity-3}
+\footnotetext{Andrew Ng Lecture, https://class.coursera.org/ml-005/lecture}
+\end{frame}
+
+
+
+
+\begin{frame}{Decision Boundary}
+  
+\begin{center}
+\ig[width=0.5\textwidth]{Images/ml3_15_1.png}
+\end{center}
+\footnotetext{http://melvincabatuan.github.io/Machine-Learning-Activity-3}
+\footnotetext{Andrew Ng Lecture, https://class.coursera.org/ml-005/lecture}
+\end{frame}
+
+
+\begin{frame}{Minimizing the Cost function}
+  \subt{
+ \begin{equation*}
+ \begin{aligned}
+  & \underset{\theta}{\text{minimize}}
+  & & J(\theta) = \dfrac{1}{m} \sum_{i=1}^{m}\big[ -y^{(i)} \log (h_{\theta} (x^{(i)})) - (1 - y^{(i)}) \log(1 - h_{\theta} (x^{(i)}))  \big]   \\
+\end{aligned}
+\end{equation*}
+}
+
+\bi
+\item To compute the minimum, we need to differentiate the cost function.
+\item In particular, we have to compute a derivative with respect to the model parameter, $\theta$.\\
+\item Gradient:
+$$ \nabla J(\theta) = \dfrac{1}{m} \sum_{i=1}^{m}  (h_{\theta}(x^{(i)}) - y^{(i)}) \, x^{(i)}$$
+\ei  
 \end{frame}
 
 
